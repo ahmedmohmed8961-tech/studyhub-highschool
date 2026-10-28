@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>منصتي التعليمية | الثانوية العامة</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">🎓</span><span id="brandName">منصتي التعليمية</span></a>
+    <nav><a href="#courses">الكورسات</a><a href="#redeem">تفعيل كود</a></nav>
+    <div id="accountArea" class="account-area"><button class="button secondary" id="showLogin">دخول / حساب جديد</button></div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">الثانوية العامة • مصر</span>
+        <h1>مستقبلك يبدأ <span>من هنا</span></h1>
+        <p>شرح منظم، محاضرات، ومراجعات تساعدك تذاكر في أي وقت ومن أي مكان.</p>
+        <a class="button" href="#courses">تصفح الكورسات</a>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="orb">📚</div><div class="floating-card">✦ تعلّم • راجع • اتفوّق</div></div>
+    </section>
+
+    <section class="section" id="courses">
+      <div class="section-head"><div><span class="eyebrow">اختار طريقك</span><h2>الكورسات المتاحة</h2></div><button class="button secondary small" id="refreshCourses">تحديث</button></div>
+      <div id="courseGrid" class="course-grid"><div class="empty">جاري تحميل الكورسات...</div></div>
+    </section>
+
+    <section class="section two-col">
+      <div class="panel" id="redeem">
+        <span class="panel-icon">🎟️</span><h2>معاك كود اشتراك؟</h2>
+        <p>سجّل دخولك واكتب الكود لتفعيل الكورس على حسابك.</p>
+        <form id="redeemForm"><label for="redeemCode">كود الاشتراك</label><div class="inline-form"><input id="redeemCode" required placeholder="مثال: AB12CD34EF56" autocomplete="off"><button class="button" type="submit">تفعيل الكود</button></div></form>
+        <div id="redeemMessage" class="message" aria-live="polite"></div>
+      </div>
+      <div class="panel">
+        <span class="panel-icon">🔐</span><h2>كورساتك المفعّلة</h2><p>الكورسات اللي اشتركت فيها هتظهر هنا بعد تسجيل الدخول.</p>
+        <div id="myCourses" class="my-courses"><div class="muted">سجّل الدخول لعرض كورساتك.</div></div>
+      </div>
+    </section>
+
+    <section class="section panel lesson-panel" id="lessonPanel" hidden>
+      <div class="section-head"><div><span class="eyebrow">قاعة الدرس</span><h2 id="lessonCourseTitle">المحاضرات</h2></div><button class="button secondary small" id="closeLesson">إغلاق</button></div>
+      <div id="lessonList" class="lesson-list"></div>
+      <div id="videoWrap" class="video-wrap" hidden><div class="video-frame" id="videoFrame"></div><p class="muted">ملحوظة: استخدم روابط فيديو تملك حق نشرها، واستضافة فيديو متخصصة لو محتاج حماية أقوى.</p></div>
+    </section>
+
+    <section class="section panel" id="adminPanel" hidden>
+      <span class="eyebrow">إدارة المنصة</span><h2>لوحة المسؤول (نسخة أولية)</h2>
+      <p>إدارة الكورسات والأكواد متاحة عبر واجهة API للمسؤول. راجع ملف README لخطوات الاستخدام.</p>
+      <div class="admin-actions"><button class="button secondary" id="adminCourses">عرض الكورسات</button><button class="button secondary" id="adminCodes">إنشاء أكواد</button></div>
+      <pre id="adminOutput" class="admin-output"></pre>
+    </section>
+  </main>
+  <footer><span>© <span id="year"></span> <span id="footerBrand">منصتي التعليمية</span></span><span>التعلّم خطوة كل يوم ✨</span></footer>
+
+  <dialog id="authDialog">
+    <form method="dialog" class="dialog-close"><button class="icon-button" aria-label="إغلاق">×</button></form>
+    <div class="dialog-heading"><span class="brand-icon">🎓</span><h2 id="authTitle">أهلاً بيك</h2><p id="authSubtitle">سجّل دخولك أو أنشئ حسابًا جديدًا</p></div>
+    <div class="tabs"><button class="tab active" id="loginTab" type="button">تسجيل الدخول</button><button class="tab" id="registerTab" type="button">حساب جديد</button></div>
+    <form id="authForm" class="form-stack">
+      <div id="nameField" hidden><label for="authName">الاسم</label><input id="authName" autocomplete="name" minlength="2" placeholder="اسم الطالب"></div>
+      <label for="authEmail">البريد الإلكتروني</label><input id="authEmail" type="email" required autocomplete="email" placeholder="student@example.com">
+      <label for="authPassword">كلمة المرور</label><input id="authPassword" type="password" required minlength="8" autocomplete="current-password" placeholder="8 أحرف على الأقل">
+      <button class="button full" id="authSubmit" type="submit">دخول</button><div id="authMessage" class="message" aria-live="polite"></div>
+    </form>
+  </dialog>
+  <script src="/app.js"></script>
+</body>
+</html>
